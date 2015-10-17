@@ -4,7 +4,7 @@
 
 This project goal is to share and enforce code standards to all your projects.
 
-### Why create this?
+## Why create this?
 
 Currently there are millions of php projects that do not follow or adapt any code standards.
 
@@ -17,6 +17,14 @@ I think the main reasons for that are:
 
 Using git-hook packages will enable everyone to share their hooks and
 reduce de number of projects not following any standards.
+
+## git-hook package
+
+A `git-hook` package is a composer package that uses the type `git-hook`.
+
+Any package that set `git-hook-installer-plugin` as dependency and `type` to `git-hook`
+will be installed on your project using this plugin.
+
 
 ## Git-hook packages available
 
@@ -71,19 +79,19 @@ You can create any of those files on your package with execute permissions.
 * update
 
 
-### How to Install
+## How to Install
 
 ```sh
 php composer.phar require bernardosilva/git-hooks-installer-plugin
 ```
 
-### How to test
+## How to test
 
 ```sh
 phpunit
 ```
 
-### How to contribute
+## How to contribute
 
 * Create your own git hook composer package.
 
