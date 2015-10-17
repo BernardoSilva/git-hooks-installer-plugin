@@ -20,6 +20,6 @@
     "phpunit/phpunit": "^4.8"
   },
   "extra": {
-    "class": "BernardoSilva\\GitHooksInstallerPlugin\\Composer\\Installer"
+    "class": "BernardoSilva\\GitHooksInstallerPlugin\\Composer\\Plugin"
   }
 }
