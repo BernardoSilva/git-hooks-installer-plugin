@@ -1,6 +1,8 @@
 # git-hooks-installer-plugin
 
-Idea in progress... 
+[![Build Status](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin.svg)](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin)
+
+Idea in progress...
 
 ### How to install
 
