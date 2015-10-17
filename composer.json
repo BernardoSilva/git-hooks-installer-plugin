@@ -1,0 +1,25 @@
+{
+  "name": "bernardosilva/git-hooks-installer-plugin",
+  "type": "composer-plugin",
+  "license": "GPL3",
+  "autoload": {
+    "psr-4": { "BernardoSilva\\": "src/" }
+  },
+  "authors": [
+    {"name": "Bernardo Silva", "email": "benny.stuff@gmail.com"}
+  ],
+  "support": {
+    "issues": "https://github.com/BernardoSilva/git-hooks-installer-plugin/issues",
+    "source": "https://github.com/BernardoSilva/git-hooks-installer-plugin"
+  },
+  "require": {
+    "composer-plugin-api": "~1.0.0"
+  },
+  "require-dev": {
+    "composer/composer": "~1.0@dev",
+    "phpunit/phpunit": "^4.8"
+  },
+  "extra": {
+    "class": "BernardoSilva\\GitHooksInstallerPlugin\\Composer\\Installer"
+  }
+}
