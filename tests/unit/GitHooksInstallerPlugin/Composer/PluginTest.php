@@ -82,7 +82,6 @@ class PluginTest extends TestCase
         $package = $this->createPackageMock();
         $package->setType('library');
 
-        $this->assertTrue(strlen($library->getInstallPath($package)) === 110);
         $this->assertContains(
             '/private/var/folders/67/2vz65h1j457byrtcnb5h610c0000gn/T/composer-test-vendor/',
             $library->getInstallPath($package)
