@@ -4,7 +4,7 @@ namespace BernardoSilva\GitHooksInstallerPlugin\Composer;
 
 require __DIR__ . '/../../../../vendor/composer/composer/tests/Composer/TestCase.php';
 
-use Composer\Installer\LibraryInstaller;
+use Composer\Package\Package;
 use Composer\Util\Filesystem;
 use Composer\TestCase;
 use Composer\Composer;
@@ -28,7 +28,7 @@ class PluginTest extends TestCase
         $this->composer = new Composer();
         $this->config = new Config();
         $this->composer->setConfig($this->config);
-        $this->package = new RootPackage('phpdocumentor/phpdocumentor', '2.0.0', '2.0.0');
+        $this->package = new RootPackage('test/test', '2.0.0', '2.0.0');
         $this->composer->setPackage($this->package);
         $this->vendorDir = realpath(sys_get_temp_dir()).DIRECTORY_SEPARATOR
                            .'composer-test-vendor';
@@ -59,11 +59,13 @@ class PluginTest extends TestCase
         $this->fs->removeDirectory($this->binDir);
     }
 
-    public function testGetInstallPath()
+    public function testGetInstallPathForGitHookPackage()
     {
         $library = new Installer($this->io, $this->composer);
         $package = $this->createPackageMock();
-        // UnifiedAssetInstaller does not support targetDir
+        $package->setType('git-hook');
+
+        // Installer does not support targetDir.
         $package
             ->expects($this->never())
             ->method('getTargetDir');
@@ -74,20 +76,50 @@ class PluginTest extends TestCase
         );
     }
 
+    public function testGetInstallPathForOtherSupportedPackages()
+    {
+        $library = new Installer($this->io, $this->composer);
+        $package = $this->createPackageMock();
+        $package->setType('library');
+
+        $this->assertTrue(strlen($library->getInstallPath($package)) === 110);
+        $this->assertContains(
+            '/private/var/folders/67/2vz65h1j457byrtcnb5h610c0000gn/T/composer-test-vendor/',
+            $library->getInstallPath($package)
+        );
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testGetInstallPathWithInvalidPackageName()
+    {
+        $library = new Installer($this->io, $this->composer);
+        $package = $this->createPackageMock();
+        $package->setType('composer-plugin');
+
+        $library->getInstallPath($package);
+    }
+
     public function testSupports()
     {
         $library = new Installer($this->io, $this->composer);
         $this->assertTrue($library->supports('git-hook'));
         $this->assertFalse($library->supports('git-hooks'));
-        $this->assertFalse($library->supports('library'));
+        $this->assertTrue($library->supports('library'));
     }
 
+    /**
+     * @return Package
+     */
     protected function createPackageMock()
     {
         return $this->getMockBuilder('Composer\Package\Package')
                     ->setConstructorArgs(array(md5(rand()), '1.0.0.0', '1.0.0'))
+                    ->setMethods(null)
                     ->getMock();
     }
+
     protected function createComposerMock()
     {
         $composer = new Composer();
