@@ -40,7 +40,7 @@ You can start by looking [into this example](https://github.com/BernardoSilva/gi
 Things required to create a new git-hook package?
 
 - [x] `composer.json` file.
-- [x] The git hook files you want to use. [view list of available hooks](#Available-hooks)
+- [x] The git hook files you want to use. [view list of available hooks](#available-hooks)
 
 Example of new composer.json file
 
