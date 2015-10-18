@@ -83,7 +83,7 @@ class PluginTest extends TestCase
         $package->setType('library');
 
         $this->assertContains(
-            '/private/var/folders/67/2vz65h1j457byrtcnb5h610c0000gn/T/composer-test-vendor/',
+            '/composer-test-vendor/',
             $library->getInstallPath($package)
         );
     }
