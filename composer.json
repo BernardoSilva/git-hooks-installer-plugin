@@ -1,7 +1,7 @@
 {
   "name": "bernardosilva/git-hooks-installer-plugin",
   "type": "composer-plugin",
-  "license": "GPL3",
+  "license": "MIT",
   "autoload": {
     "psr-4": { "BernardoSilva\\": "src/" }
   },
