@@ -21,7 +21,7 @@ class Installer extends LibraryInstaller
     /**
      * {@inheritdoc}
      */
-    public function supports( $packageType )
+    public function supports($packageType)
     {
         return in_array($packageType, self::$supportedTypes);
     }
@@ -38,7 +38,7 @@ class Installer extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        if(!$this->supports($package->getType())) {
+        if (!$this->supports($package->getType())) {
             throw new \InvalidArgumentException(
                 'Unable to install package, git-hook packages only '
                 .'support "git-hook", "library" type packages.'
@@ -46,7 +46,7 @@ class Installer extends LibraryInstaller
         }
 
         // Allow to LibraryInstaller to resolve the installPath for other packages.
-        if($package->getType() !== 'git-hook'){
+        if ($package->getType() !== 'git-hook') {
             return parent::getInstallPath($package);
         }
 
