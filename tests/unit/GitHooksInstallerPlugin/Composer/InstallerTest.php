@@ -11,7 +11,7 @@ use Composer\Composer;
 use Composer\Config;
 use Composer\Package\RootPackage;
 
-class PluginTest extends TestCase
+class InstallerTest extends TestCase
 {
     protected $composer;
     protected $config;
