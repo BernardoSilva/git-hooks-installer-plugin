@@ -1,5 +1,6 @@
 # git-hooks-installer-plugin
 
+[![License](https://img.shields.io/packagist/l/bernardosilva/git-hooks-installer-plugin.svg)](https://packagist.org/packages/bernardosilva/git-hooks-installer-plugin)
 [![Build Status](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin.svg)](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin)
 
 This project goal is to share and enforce code standards to all your projects.
