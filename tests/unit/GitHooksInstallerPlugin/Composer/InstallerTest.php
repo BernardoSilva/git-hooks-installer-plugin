@@ -2,8 +2,6 @@
 
 namespace BernardoSilva\GitHooksInstallerPlugin\Composer;
 
-require __DIR__ . '/../../../../vendor/composer/composer/tests/Composer/TestCase.php';
-
 use Composer\Package\Package;
 use Composer\Util\Filesystem;
 use Composer\TestCase;
