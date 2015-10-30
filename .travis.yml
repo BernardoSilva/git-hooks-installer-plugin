@@ -15,7 +15,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - php php-cs-fixer.phar fix --level=psr2 --dry-run -v
+  - php php-cs-fixer.phar fix --level=psr2 --dry-run -v src/
   - phpunit --coverage-clover=coverage.clover
 
 after_script:
