@@ -10,12 +10,11 @@ php:
   - hhvm
 
 before_script:
-  - wget http://get.sensiolabs.org/php-cs-fixer.phar -O php-cs-fixer.phar
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - php php-cs-fixer.phar fix --level=psr2 --dry-run -v src/
+  - ./vendor/bin/phpcbf --standard=PSR2 -v src/
   - phpunit --coverage-clover=coverage.clover
 
 after_script:
