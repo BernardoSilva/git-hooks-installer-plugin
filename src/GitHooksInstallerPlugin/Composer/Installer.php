@@ -64,12 +64,12 @@ class Installer extends LibraryInstaller
         if (!$this->supports($package->getType())) {
             throw new \InvalidArgumentException(
                 'Unable to install package, git-hook packages only '
-                .'support "git-hook", "library" type packages.'
+                . 'support "git-hook", "library" type packages.'
             );
         }
 
         // Allow to LibraryInstaller to resolve the installPath for other packages.
-        if ($package->getType() !== 'git-hook') {    
+        if ($package->getType() !== 'git-hook') {
             return parent::getInstallPath($package);
         }
 
@@ -86,8 +86,8 @@ class Installer extends LibraryInstaller
     {
         parent::install($repo, $package);
         foreach ($this->getSupportedHooks() as $gitHookName) {
-            $installedHookFilePath = $this->getInstallPath($package) . DIRECTORY_SEPARATOR .$gitHookName; 
-            
+            $installedHookFilePath = $this->getInstallPath($package) . DIRECTORY_SEPARATOR . $gitHookName;
+
             if (file_exists($installedHookFilePath)) {
                 $hookDestinationPath = $this->getGitHooksPath() . DIRECTORY_SEPARATOR . $gitHookName;
                 copy($installedHookFilePath, $hookDestinationPath);
@@ -96,7 +96,7 @@ class Installer extends LibraryInstaller
         }
 
         // clean up temporary data
-        exec('rm -rf '. $this->getHooksInstallationPath());
+        exec('rm -rf ' . $this->getHooksInstallationPath());
     }
 
     /**
