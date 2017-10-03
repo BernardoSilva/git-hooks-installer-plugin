@@ -90,7 +90,7 @@ php composer.phar require bernardosilva/git-hooks-installer-plugin
 ## How to test
 
 ```sh
-phpunit
+./vendor/bin/phpunit
 ```
 
 ## How to contribute

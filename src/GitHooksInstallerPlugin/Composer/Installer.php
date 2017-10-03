@@ -4,6 +4,7 @@ namespace BernardoSilva\GitHooksInstallerPlugin\Composer;
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
+use Composer\Repository\InstalledRepositoryInterface;
 
 class Installer extends LibraryInstaller
 {
@@ -16,6 +17,28 @@ class Installer extends LibraryInstaller
     public static $supportedTypes = [
         'git-hook',
         'library'
+    ];
+
+    private $supportedHooks = [
+        'applypatch-msg',
+        'pre-applypatch',
+        'post-applypatch',
+        'pre-commit',
+        'prepare-commit-msg',
+        'commit-msg',
+        'post-commit',
+        'pre-rebase',
+        'post-checkout',
+        'post-merge',
+        'pre-push',
+        'pre-receive',
+        'update',
+        'post-receive',
+        'post-update',
+        'push-to-checkout',
+        'pre-auto-gc',
+        'post-rewrite',
+        'sendemail-validate'
     ];
 
     /**
@@ -41,7 +64,7 @@ class Installer extends LibraryInstaller
         if (!$this->supports($package->getType())) {
             throw new \InvalidArgumentException(
                 'Unable to install package, git-hook packages only '
-                .'support "git-hook", "library" type packages.'
+                . 'support "git-hook", "library" type packages.'
             );
         }
 
@@ -50,7 +73,30 @@ class Installer extends LibraryInstaller
             return parent::getInstallPath($package);
         }
 
-        return $this->getGitHooksPath();
+        return $this->getHooksInstallationPath();
+    }
+
+    /**
+     * Install the plugin to the git hooks path
+     *
+     * Note: This method installs the plugin into a temporary directory and then only copy the git-hook
+     * related files into the git hooks directory to avoid colision with other plugins.
+     */
+    public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
+    {
+        parent::install($repo, $package);
+        foreach ($this->getSupportedHooks() as $gitHookName) {
+            $installedHookFilePath = $this->getInstallPath($package) . DIRECTORY_SEPARATOR . $gitHookName;
+
+            if (file_exists($installedHookFilePath)) {
+                $hookDestinationPath = $this->getGitHooksPath() . DIRECTORY_SEPARATOR . $gitHookName;
+                copy($installedHookFilePath, $hookDestinationPath);
+                chmod($hookDestinationPath, '0755');
+            }
+        }
+
+        // clean up temporary data
+        exec('rm -rf ' . $this->getHooksInstallationPath());
     }
 
     /**
@@ -59,5 +105,18 @@ class Installer extends LibraryInstaller
     protected function getGitHooksPath()
     {
         return '.git/hooks';
+    }
+
+    protected function getHooksInstallationPath()
+    {
+        return '.git/hooks/.GitHooksInstallerPlugin';
+    }
+
+    /**
+     * @return array
+     */
+    private function getSupportedHooks()
+    {
+        return $this->supportedHooks;
     }
 }

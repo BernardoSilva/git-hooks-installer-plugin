@@ -69,7 +69,7 @@ class InstallerTest extends TestCase
             ->method('getTargetDir');
 
         $this->assertEquals(
-            '.git/hooks',
+            '.git/hooks/.GitHooksInstallerPlugin',
             $library->getInstallPath($package)
         );
     }
