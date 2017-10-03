@@ -91,7 +91,7 @@ class Installer extends LibraryInstaller
             if (file_exists($installedHookFilePath)) {
                 $hookDestinationPath = $this->getGitHooksPath() . DIRECTORY_SEPARATOR . $gitHookName;
                 copy($installedHookFilePath, $hookDestinationPath);
-                chmod($hookDestinationPath, '0755');
+                chmod($hookDestinationPath, 0755);
             }
         }
 
