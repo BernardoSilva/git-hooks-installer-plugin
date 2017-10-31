@@ -70,15 +70,18 @@ Also your git hooks should have execution permission.
 
 You can create any of those files on your package with execute permissions.
 
-* applypatch-msg
-* commit-msg
-* post-update
-* pre-applypatch
-* pre-commit
-* pre-push
-* pre-rebase
-* prepare-commit-msg
-* update
+* [applypatch-msg](https://git-scm.com/docs/githooks#_applypatch_msg)
+* [pre-applypatch](https://git-scm.com/docs/githooks#_pre_applypatch)
+* [pre-commit](https://git-scm.com/docs/githooks#_pre_commit)
+* [prepare-commit-msg](https://git-scm.com/docs/githooks#_prepare_commit_msg)
+* [commit-msg](https://git-scm.com/docs/githooks#_commit_msg)
+* [pre-rebase](https://git-scm.com/docs/githooks#_pre_rebase)
+* [pre-push](https://git-scm.com/docs/githooks#_pre_push)
+* [update](https://git-scm.com/docs/githooks#update)
+* [post-update](https://git-scm.com/docs/githooks#post-update)
+
+
+[See a list of all git hooks available](https://git-scm.com/docs/githooks)
 
 
 ## How to Install
@@ -100,3 +103,12 @@ php composer.phar require bernardosilva/git-hooks-installer-plugin
 * Create a PR to list your package on this page.
 
 * Raise new issues or add suggestions to improve this plugin.
+
+
+## Created By
+
+[Bernardo Silva](https://www.bernardosilva.com)
+
+## License
+
+MIT © [Bernardo Silva](https://www.bernardosilva.com) 
