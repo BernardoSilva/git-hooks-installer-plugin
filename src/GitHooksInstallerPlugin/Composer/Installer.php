@@ -104,12 +104,17 @@ class Installer extends LibraryInstaller
      */
     protected function getGitHooksPath()
     {
-        return '.git/hooks';
+        $gitDir = exec('git rev-parse --git-dir');
+        if ($gitDir != '.git') {
+            $gitDir .= DIRECTORY_SEPARATOR . '.git';
+        }
+
+        return $gitDir . DIRECTORY_SEPARATOR . 'hooks';
     }
 
     protected function getHooksInstallationPath()
     {
-        return '.git/hooks/.GitHooksInstallerPlugin';
+        return $this->getGitHooksPath() . DIRECTORY_SEPARATOR . '.GitHooksInstallerPlugin';
     }
 
     /**
