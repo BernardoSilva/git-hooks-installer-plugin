@@ -33,6 +33,7 @@ will be installed on your project using this plugin.
 Create you own git-hook package to be listed here and share it with everyone.
 
 * [bernardosilva/git-hooks-php](https://packagist.org/packages/bernardosilva/git-hooks-php)
+* [partnermarketing/pm-git-hooks-php](https://packagist.org/packages/partnermarketing/pm-git-hooks-php)
 
 
 ## How to create my git-hook packages?
