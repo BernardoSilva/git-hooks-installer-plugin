@@ -103,3 +103,12 @@ php composer.phar require bernardosilva/git-hooks-installer-plugin
 * Create a PR to list your package on this page.
 
 * Raise new issues or add suggestions to improve this plugin.
+
+
+## Created By
+
+[Bernardo Silva](https://www.bernardosilva.com)
+
+## License
+
+MIT © [Bernardo Silva](https://www.bernardosilva.com) 
