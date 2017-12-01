@@ -1,5 +1,8 @@
 # git-hooks-installer-plugin
 
+[![Latest Stable Version](https://poser.pugx.org/bernardosilva/git-hooks-installer-plugin/v/stable)](https://packagist.org/packages/bernardosilva/git-hooks-installer-plugin)
+[![Total Downloads](https://poser.pugx.org/bernardosilva/git-hooks-installer-plugin/downloads)](https://packagist.org/packages/bernardosilva/git-hooks-installer-plugin)
+[![Monthly Downloads](https://poser.pugx.org/bernardosilva/git-hooks-installer-plugin/d/monthly)](https://packagist.org/packages/bernardosilva/git-hooks-installer-plugin)
 [![License](https://img.shields.io/packagist/l/bernardosilva/git-hooks-installer-plugin.svg)](https://packagist.org/packages/bernardosilva/git-hooks-installer-plugin)
 [![Build Status](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin.svg)](https://travis-ci.org/BernardoSilva/git-hooks-installer-plugin)
 [![Code Coverage](https://scrutinizer-ci.com/g/BernardoSilva/git-hooks-installer-plugin/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/BernardoSilva/git-hooks-installer-plugin/?branch=master)
