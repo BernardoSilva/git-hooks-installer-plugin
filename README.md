@@ -56,7 +56,7 @@ Example of new composer.json file
     "type": "git-hook",
     "description": "Composer git-hook package with hooks for your php projects.",
     "require": {
-        "bernardosilva/git-hooks-installer-plugin": "^0.0.2"
+        "bernardosilva/git-hooks-installer-plugin": "^1.0.0"
     }
 }
 ```
