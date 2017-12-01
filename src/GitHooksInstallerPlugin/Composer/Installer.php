@@ -14,12 +14,12 @@ class Installer extends LibraryInstaller
      *
      * @var array
      */
-    public static $supportedTypes = [
+    public static $supportedTypes = array(
         'git-hook',
         'library'
-    ];
+    );
 
-    private $supportedHooks = [
+    private $supportedHooks = array(
         'applypatch-msg',
         'pre-applypatch',
         'post-applypatch',
@@ -39,7 +39,7 @@ class Installer extends LibraryInstaller
         'pre-auto-gc',
         'post-rewrite',
         'sendemail-validate'
-    ];
+    );
 
     /**
      * {@inheritdoc}
