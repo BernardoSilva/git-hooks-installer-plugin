@@ -90,7 +90,13 @@ class Installer extends LibraryInstaller
 
             if (file_exists($installedHookFilePath)) {
                 $hookDestinationPath = $this->getGitHooksPath() . DIRECTORY_SEPARATOR . $gitHookName;
-                copy($installedHookFilePath, $hookDestinationPath);
+                if (!copy($installedHookFilePath, $hookDestinationPath)) {
+                    echo sprintf(
+                        'GitHookInstallerPlugin failed to copy %s to %s!',
+                        $installedHookFilePath,
+                        $hookDestinationPath
+                    );
+                }
                 chmod($hookDestinationPath, 0755);
             }
         }
@@ -105,7 +111,7 @@ class Installer extends LibraryInstaller
     protected function getGitHooksPath()
     {
         $gitDir = exec('git rev-parse --git-dir');
-        if ($gitDir != '.git') {
+        if (!preg_match('/\.git$/i', $gitDir)) {
             $gitDir .= DIRECTORY_SEPARATOR . '.git';
         }
 
