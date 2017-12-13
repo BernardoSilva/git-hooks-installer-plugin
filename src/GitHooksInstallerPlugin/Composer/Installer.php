@@ -111,7 +111,7 @@ class Installer extends LibraryInstaller
     protected function getGitHooksPath()
     {
         $gitDir = exec('git rev-parse --git-dir');
-        if ($gitDir != '.git') {
+        if (!preg_match('/\.git$/i', $gitDir)) {
             $gitDir .= DIRECTORY_SEPARATOR . '.git';
         }
 
