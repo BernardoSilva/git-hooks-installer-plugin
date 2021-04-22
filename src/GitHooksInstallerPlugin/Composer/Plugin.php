@@ -23,13 +23,11 @@ class Plugin implements PluginInterface
 
     public function deactivate(Composer $composer, IOInterface $io)
     {
-        $installer = new Installer($io, $composer);
-        $composer->getInstallationManager()->disablePlugins($installer);
+
     }
 
     public function uninstall(Composer $composer, IOInterface $io)
     {
-        $installer = new Installer($io, $composer);
-        $composer->getInstallationManager()->uninstall($installer);
+
     }
 }
