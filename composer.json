@@ -13,11 +13,11 @@
     "source": "https://github.com/BernardoSilva/git-hooks-installer-plugin"
   },
   "require": {
-    "composer-plugin-api": "^1.0",
+    "composer-plugin-api": "^2.0",
     "symfony/process": ">=2.3"
   },
   "require-dev": {
-    "composer/composer": "~1.0@dev",
+    "composer/composer": "~2.0@dev",
     "phpunit/phpunit": "^4.8",
     "squizlabs/php_codesniffer": "^2.0"
   },

@@ -4,10 +4,10 @@ namespace BernardoSilva\GitHooksInstallerPlugin\Composer;
 
 use Composer\Package\Package;
 use Composer\Util\Filesystem;
-use Composer\TestCase;
 use Composer\Composer;
 use Composer\Config;
 use Composer\Package\RootPackage;
+use PHPUnit\Framework\TestCase;
 
 class InstallerTest extends TestCase
 {
@@ -22,7 +22,7 @@ class InstallerTest extends TestCase
     protected $package;
     protected function setUp()
     {
-        $this->fs = new Filesystem;
+        $this->fs = new Filesystem();
         $this->composer = new Composer();
         $this->config = new Config();
         $this->composer->setConfig($this->config);
@@ -51,6 +51,18 @@ class InstallerTest extends TestCase
         );
         $this->io = $this->getMock('Composer\IO\IOInterface');
     }
+
+    private function ensureDirectoryExistsAndClear($directory)
+    {
+        $fs = new Filesystem();
+
+        if (is_dir($directory)) {
+            $fs->removeDirectory($directory);
+        }
+
+        mkdir($directory, 0777, true);
+    }
+
     protected function tearDown()
     {
         $this->fs->removeDirectory($this->vendorDir);
