@@ -3,9 +3,11 @@
 namespace BernardoSilva\GitHooksInstallerPlugin\Composer;
 
 use Composer\Installer\InstallationManager;
-use Composer\TestCase;
 use Composer\Composer;
 use Composer\Config;
+use Composer\IO\IOInterface;
+use Composer\Util\Loop;
+use PHPUnit\Framework\TestCase;
 
 class PluginTest extends TestCase
 {
@@ -21,8 +23,11 @@ class PluginTest extends TestCase
         $this->composer = new Composer();
         $this->config = new Config();
         $this->composer->setConfig($this->config);
-        $this->composer->setInstallationManager(new InstallationManager());
-        $this->io = $this->getMock('Composer\IO\IOInterface');
+
+        $loop = $this->getMockBuilder(Loop::class)->disableOriginalConstructor()->getMock();
+        $this->io = $this->getMock(IOInterface::class);
+
+        $this->composer->setInstallationManager(new InstallationManager($loop, $this->io));
     }
 
     public function testActivateAddsInstallerSuccessfully()
